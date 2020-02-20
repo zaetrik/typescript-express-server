@@ -1,0 +1,37 @@
+version: "3.3"
+
+networks:
+  internal:
+  external:
+
+services:
+  typescript-express-server:
+    build:
+      context: .
+      args:
+        PORT: ${PORT}
+    container_name: typescript-express-server
+    env_file:
+      - dev.env
+    restart: always
+    volumes:
+      - ./logs:/home/dockeruser/app/logs/
+    networks:
+      - external
+      - internal
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - dev.env
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - ./postgres-data/postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - internal
