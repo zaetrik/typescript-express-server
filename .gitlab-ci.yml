@@ -9,7 +9,7 @@ cache:
 
 build typescript-express-server:
   stage: build
-  image: node:10.16.0-alpine
+  image: node:13.8.0-alpine
   script:
     - npm i
   artifacts:
@@ -18,7 +18,7 @@ build typescript-express-server:
 
 test typescript-express-server:
   stage: test
-  image: node:10.16.0-alpine
+  image: node:13.8.0-alpine
   services:
     - name: postgres
       alias: postgres

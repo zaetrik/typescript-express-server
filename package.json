@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "dev": "NODE_ENV=development PORT=3003 nodemon --ignore logs/ dist/index.js",
     "test": "CI=false PORT=3003 jest ./src/tests --runInBand --detectOpenHandles --forceExit",
-    "ci": "CI=true DB_SERVER=http://postgres:5432 DB_HOST=postgres DB_PORT=5432 DB_NAME=example DB_USERNAME=user DB_PASSWORD=password PORT=3003 jest ./src/tests --detectOpenHandles --forceExit"
+    "ci": "CI=true DB_SERVER=http://postgres:5432 DB_HOST=postgres DB_PORT=5432 DB_NAME=example DB_USERNAME=user DB_PASSWORD=password PORT=3003 jest ./src/tests --runInBand --detectOpenHandles --forceExit"
   },
   "author": "Cedric Dose",
   "license": "ISC",
