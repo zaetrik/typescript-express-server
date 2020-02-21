@@ -1,6 +1,6 @@
 import supertest from "supertest";
 
-describe("API", () => {
+describe("API Controller", () => {
   const api = supertest(`localhost:${process.env.PORT}`);
 
   it("gets all data from repository", async () => {

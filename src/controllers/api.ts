@@ -1,9 +1,9 @@
+// Packages
 import httpStatus from "http-status";
 
 // Types
 import { Application, Request, Response, NextFunction } from "express";
 
-// repository is used to pass different DB functions (e.g. testDbAbstraction)
 export = (app: Application, services: Services) => {
   app.get("/api", async (req: Request, res: Response, next: NextFunction) => {
     try {

@@ -11,5 +11,5 @@ export const dbSettings = {
 
 // server parameters
 export const serverSettings = {
-  port: process.env.PORT || 3003
+  port: Number(process.env.PORT) || 3003
 };

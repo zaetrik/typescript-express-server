@@ -1,12 +1,17 @@
+// Packages
 import express, { Request, Response, NextFunction } from "express";
+import cors from "cors";
+
+// Setup
 import logSetup from "../setup/serverLog";
 import helmetSetup from "../setup/helmet";
 import controllersSetup from "../setup/controllers";
-import { serverSettings } from "../config/config";
-import logger from "../utils/logger";
-import cors from "cors";
 
-export const start = (services: Services): Promise<express.Application> => {
+// Utils
+import logger from "../utils/logger";
+import { Server } from "http";
+
+export const start = (services: Services, port: number): Promise<Server> => {
   return new Promise((resolve, reject) => {
     const app: express.Application = express();
 
@@ -17,12 +22,12 @@ export const start = (services: Services): Promise<express.Application> => {
 
     app.use((err, req: Request, res: Response, next: NextFunction) => {
       logger.log("error", err, { route: req.originalUrl });
-      res.status(500).send("Something went wrong!");
+      return res.status(err.httpStatusCode || 500).json(err);
     });
 
     controllersSetup(app, services);
 
     // finally we start the server, and return the newly created server
-    const server = app.listen(serverSettings.port, () => resolve(server));
+    const server: Server = app.listen(port, () => resolve(server));
   });
 };

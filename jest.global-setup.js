@@ -17,15 +17,22 @@ const waitForServiceToBeUp = (url, httpCode) => {
 };
 
 module.exports = async () => {
-  if (!shell.which("docker-compose")) {
-    shell.echo("Sorry, this script requires docker-compose");
-    shell.exit(1);
+  if (process.env.CI === "false") {
+    if (!shell.which("docker-compose")) {
+      shell.echo("Sorry, this script requires docker-compose");
+      shell.exit(1);
+    }
+    shell.exec(
+      `PORT=${process.env.PORT} docker-compose -f docker-compose.test.yml up --build -d`
+    );
+
+    shell.exec("sleep 10");
+
+    await waitForServiceToBeUp(`http://localhost:${process.env.PORT}/api`, 200);
+  } else {
+    const { spawn } = require("child_process");
+
+    spawn("npm", ["run", "dev"]);
+    shell.exec("sleep 10");
   }
-  shell.exec(
-    `PORT=${process.env.PORT} docker-compose -f docker-compose.test.yml up --build -d`
-  );
-
-  shell.exec("sleep 10");
-
-  await waitForServiceToBeUp(`http://localhost:${process.env.PORT}/api`, 200);
 };
