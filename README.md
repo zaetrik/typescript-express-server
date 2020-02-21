@@ -1,6 +1,6 @@
 # Typescript-Express-Server - Basic Starter Template
 
-[![Pipeline Status](https://gitlab.com/Cedomic/typescript-express-server/badges/master/pipeline.svg)](https://gitlab.com/Cedomic/aggregation-hub/pipelines/latest)
+[![Pipeline Status](https://gitlab.com/Cedomic/typescript-express-server/badges/master/pipeline.svg)](https://gitlab.com/Cedomic/typescript-express-server/pipelines/latest)
 
 This is a basic starter template for an Express.js server with a Postgres database written in TypeScript.
 
