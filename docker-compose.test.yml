@@ -7,8 +7,6 @@ services:
       context: .
       args:
         PORT: ${PORT}
-    env_file:
-      - dev.env
     restart: always
     ports:
       - "${PORT}:${PORT}"

@@ -16,7 +16,7 @@ build typescript-express-server:
     paths:
       - node_modules/
 
-test modules-server:
+test typescript-express-server:
   stage: test
   image: node:10.16.0-alpine
   services:
