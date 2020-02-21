@@ -27,6 +27,7 @@ test typescript-express-server:
     POSTGRES_PASSWORD: password
     POSTGRES_DB: example
   before_script:
-    - tsc
+    - npm i -g typescript
+    - tsc --build # build TypeScript files
   script:
     - npm run ci
