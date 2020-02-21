@@ -22,6 +22,7 @@ module.exports = async () => {
       shell.echo("Sorry, this script requires docker-compose");
       shell.exit(1);
     }
+
     shell.exec(
       `PORT=${process.env.PORT} docker-compose -f docker-compose.test.yml up --build -d`
     );
