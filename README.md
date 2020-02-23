@@ -6,7 +6,7 @@ This is a basic starter template for an Express.js server with a Postgres databa
 
 ## Usage
 
-Clone the repository and run `docker-compose -f docker-compose.dev.yml up`. The server is reachable at `http://localhost:3003/api`.
+Clone the repository and run `tsc --build && docker-compose -f docker-compose.dev.yml up`. The server is reachable at `http://localhost:3003/api`.
 
 ## Architecture
 
@@ -23,6 +23,10 @@ This layer includes all business logic. The service layer is also the only layer
 ### Data Access Layer - /repository
 
 In this layer you define all logic related to data access (e.g. logic to query from your data source). Current data source is a Postgres database.
+
+### Pub/Sub Layer - /subscribers
+
+Handles third-party calls (e.g. send email on user sign up or send data to analytics service). Service layer emits an event and the subscribers listen for the event and handle it.
 
 ## Other
 

@@ -7,11 +7,15 @@ import logSetup from "../setup/serverLog";
 import helmetSetup from "../setup/helmet";
 import controllersSetup from "../setup/controllers";
 
-// Utils
-import logger from "../utils/logger";
+// Types
 import { Server } from "http";
+import { Logger } from "logger";
 
-export const start = (services: Services, port: number): Promise<Server> => {
+export const start = (
+  services: Services,
+  port: number,
+  logger: Logger
+): Promise<Server> => {
   return new Promise((resolve, reject) => {
     const app: express.Application = express();
 
@@ -25,7 +29,7 @@ export const start = (services: Services, port: number): Promise<Server> => {
       return res.status(err.httpStatusCode || 500).json(err);
     });
 
-    controllersSetup(app, services);
+    controllersSetup(app, services, logger);
 
     // finally we start the server, and return the newly created server
     const server: Server = app.listen(port, () => resolve(server));

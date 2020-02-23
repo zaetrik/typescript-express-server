@@ -1,10 +1,12 @@
 import * as Joi from "@hapi/joi";
 import httpStatus from "http-status";
-import logger from "../../../utils/logger";
+import * as loggerSetup from "../../../setup/logger";
 
 // Types
 import { Request, Response, NextFunction } from "express";
 import * as JoiTypes from "joi";
+
+const logger = loggerSetup.setupLogger();
 
 const validate = (
   req: Request,

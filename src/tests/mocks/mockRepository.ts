@@ -1,7 +1,7 @@
 // Types
 import { Repository } from "repository";
 
-export const repository: Repository = {
+export const mockRepository: Repository = {
   getAllData: () =>
     new Promise((resolve, reject) => {
       resolve([]);

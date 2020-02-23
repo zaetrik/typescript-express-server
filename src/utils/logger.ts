@@ -1,6 +1,9 @@
 import winston from "winston";
 
-const logger: winston.Logger = winston.createLogger({
+// Types
+import { Logger } from "logger";
+
+const logger: Logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
     winston.format.timestamp({
