@@ -10,7 +10,7 @@ Clone the repository and run `tsc --build && docker-compose -f docker-compose.de
 
 ## Architecture
 
-The server uses a 3-layer architecture (Controller Layer, Service Layer, Data Access Layer).
+The server uses a 3-layer architecture + an extra Pub/Sub Layer (Controller Layer, Service Layer, Data Access Layer, Pub/Sub Layer).
 
 ### Controller Layer - /controllers
 
