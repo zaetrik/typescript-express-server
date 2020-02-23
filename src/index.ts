@@ -12,7 +12,7 @@ import { serverSettings } from "./config/config";
 
 // Types
 import { Repository, RepositoryConnection } from "repository";
-import { CustomEventEmitter } from "CustomEventEmitter";
+import { CustomEventEmitter } from "customEventEmitter";
 import { Logger } from "logger";
 
 const start = async () => {
